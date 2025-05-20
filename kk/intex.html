@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shumou Abha | Engineering Excellence</title>
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --light-gold: #F5DEB3;
+            --white: #FFFFFF;
+            --black: #000000;
+            --dark-gray: #333333;
+            --light-gray: #F5F5F5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-gold);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .hero-content {
+            color: var(--white);
+        }
+        
+        .hero-logo {
+            width: 150px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--gold);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background-color: var(--gold);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--dark-gray);
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--light-gray);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark-gold);
+        }
+        
+        .service-content p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--dark-gold);
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .contact-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--dark-gray);
+        }
+        
+        .contact-text p {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        
+        .submit-btn {
+            background-color: var(--gold);
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--dark-gold);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-links h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 991px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .nav-menu {
+                margin-top: 20px;
+            }
+            
+            .nav-menu li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/imgeh/55.png" alt="Shumou Abha Logo">
+                    <div class="logo-text">Shumou_Abha</div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="/imgeh/55.png" alt="Shumou Abha Logo" class="hero-logo">
+                <h1>Welcome to Shumou Abha</h1>
+                <p>Engineering Excellence & Innovative Solutions</p>
+                <a href="#contact" class="btn">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Shumou Abha is a premier engineering company based in Saudi Arabia, dedicated to providing innovative and sustainable engineering solutions across various sectors. With our team of highly skilled engineers and technical professionals, we deliver projects that meet the highest standards of quality and excellence.</p>
+                    <p>Our company combines technical expertise with creative thinking to solve complex engineering challenges. We pride ourselves on our commitment to innovation, quality, and client satisfaction. Our approach is collaborative, working closely with our clients to understand their needs and deliver tailored solutions.</p>
+                    <p>At Shumou Abha, we're not just building structures; we're building relationships and communities. Our vision is to be the leading engineering firm known for excellence, innovation, and sustainability in Saudi Arabia and beyond.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/imgeh/55.png" alt="About Shumou Abha">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="/imgeh/55.png" alt="Civil Engineering">
+                    <div class="service-content">
+                        <h3>Civil Engineering</h3>
+                        <p>Our civil engineering services include structural design, infrastructure development, and construction management for both public and private sectors.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="/imgeh/55.png" alt="Mechanical Engineering">
+                    <div class="service-content">
+                        <h3>Mechanical Engineering</h3>
+                        <p>We provide comprehensive mechanical engineering solutions, including HVAC systems, plumbing design, and mechanical equipment installation.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="/imgeh/55.png" alt="Electrical Engineering">
+                    <div class="service-content">
+                        <h3>Electrical Engineering</h3>
+                        <p>Our electrical engineering team designs and implements power distribution systems, lighting, and electrical control systems for various projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Projects</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="imgeh/55.png" alt="Commercial Project">
+                    <div class="service-content">
+                        <h3>Commercial Buildings</h3>
+                        <p>Modern office complexes and retail centers designed with functionality and aesthetics in mind.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="imgeh/55.png" alt="Residential Project">
+                    <div class="service-content">
+                        <h3>Residential Complexes</h3>
+                        <p>Luxury residential developments that combine comfort, safety, and innovative architectural design.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="imgeh/55.png" alt="Infrastructure Project">
+                    <div class="service-content">
+                        <h3>Infrastructure Development</h3>
+                        <p>Major infrastructure projects including roads, bridges, and public facilities that serve communities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+                                <path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Our Location</h4>
+                            <p>Abha, Saudi Arabia,Khamis Mushayt</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email Us</h4>
+                            <p>info@shumou-abha.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+                                <path d="M20 22.621l-3.521-6.795c-.008.004-1.974.97-2.064 1.011-2.24 1.086-6.799-7.82-4.609-8.994l2.083-1.026-3.493-6.817-2.106 1.039c-7.202 3.755 4.233 25.982 11.6 22.615.121-.055 2.102-1.029 2.11-1.033z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Call Us</h4>
+                            <p>+966 565 819 197</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="/imgeh/55.png" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/imgeh/55.png" alt="Shumou Abha Logo">
+                    <p>Shumou Abha is a leading engineering company providing innovative solutions across Saudi Arabia. We are committed to excellence, quality, and customer satisfaction.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">Civil Engineering</a></li>
+                        <li><a href="#services">Mechanical Engineering</a></li>
+                        <li><a href="#services">Electrical Engineering</a></li>
+                        <li><a href="#services">Project Management</a></li>
+                        <li><a href="#services">Consulting Services</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Shumou Abha. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
